@@ -1,0 +1,100 @@
+# 📝 Chuleta de sintaxis Markdown en Jupyter
+
+https://www.datacamp.com/tutorial/markdown-in-jupyter-notebook
+
+## Títulos
+# Título nivel 1
+## Título nivel 2
+### Título nivel 3
+
+## Énfasis
+**Negrita**  
+*Itálica*  
+~~Tachado~~
+
+## Listas
+- Elemento 1
+- Elemento 2
+  - Sub-elemento
+
+1. Paso uno
+2. Paso dos
+3. Paso tres
+
+## Código
+Código en línea: `print("Hola")`
+
+Bloque de código de insallacion:
+*****************
+pip install pillow matplotlib
+*****************
+pip install numpy==1.24.4
+*****************
+pip install --upgrade matplotlib
+*****************
+pip freeze > requirements.txt
+pip install -r requirements.txt
+*****************```python
+import numpy as np
+print(np.arange(5))
+******************
+from PIL import Image 
+import matplotlib.pyplot as plt 
+img_color = Image.open("./lena_color.tiff") 
+plt.imshow(img_color) 
+plt.axis('off') 
+plt.show() 
+*****************
+
+Creacion entornos virtuales:
+python -m venv nombre_entorno
+poi attivarlo e poi installare le librerie pillow, mat...
+
+La entropía de una variable aleatoria $X$ se define como:
+
+$$
+H(X) = - \sum_{i=1}^{n} p(x_i) \log_2 p(x_i)
+$$
+
+![Texto alternativo](ruta/imagen.png)
+
+La siguiente es la famosa imagen de Lena:
+
+![Lena en color](lena_color.tiff)
+
+
+## Note GitHub: User1 = francescoferrignopy; gmail. User2 = francescoferrignosp;email: f.ferr.spain@outlook.com
+## Note Conda (miniforge) path: C:\Users\Asus\miniforge3\condabin 
+
+
+## Pylint => code analyzer: sw che revisa la calidad del programa escrito
+## Installazione tramite PIP: pip install pylint
+## Esecuzione da riga di comando su un file Python: pylint tuofile.py
+## Disabilitare un controllo specifico all'interno de codice usando un commento: # pylint: disable=missing-module-docstring
+
+
+# Comandos numpy para visualizacion imagen:
+import numpy as np 
+img_color = Image.open("./lena_color.tiff") 
+img_rgb = np.array(img_color) 
+canal_rojo = img_rgb[:, :, 0] 
+hist, bins = np.histogram(canal_rojo, bins=256, range=(0, 256))
+
+# Comandos matplot y seaborn para representar histograma:
+# Histograma con Matplotlib 
+plt.hist(canal_rojo, bins=64, color="red", alpha=0.7, edgecolor="black") 
+# Histograma con Seaborn 
+sns.histplot(canal_rojo, bins=64, color="red", alpha=0.5, stat="density", edgecolor="black") 
+sns.kdeplot(canal_rojo, color="black", linewidth=2, linestyle="--", fill=False)
+
+# Comandos OpenCV para manipular imagenes:
+import cv2 
+# Cargar imagen en BGR 
+img_bgr = cv2.imread(str(LENA_COLOR), cv2.IMREAD_COLOR) 
+# Convertir a RGB (para visualizar correctamente con Matplotlib) 
+img_rgb = cv2.cvtColor(img_bgr, cv2.COLOR_BGR2RGB) 
+# Convertir a escala de grises 
+gris = cv2.cvtColor(img_bgr, cv2.COLOR_BGR2GRAY) 
+# Ecualización de histograma en la imagen en grises 
+gris_eq = cv2.equalizeHist(gris) 
+plt.imshow(gris_eq, cmap="gray")
